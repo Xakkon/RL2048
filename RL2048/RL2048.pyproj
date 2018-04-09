@@ -21,7 +21,25 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Environment\Game.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Environment\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReinforcementLearning\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="RL2048.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Environment\" />
+    <Folder Include="Algorithms\" />
+    <Folder Include="D:\Programming\RL2048\RL2048\ReinforcementLearning\" />
+    <Folder Include="ReinforcementLearning\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
