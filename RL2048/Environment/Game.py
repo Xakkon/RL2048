@@ -2,14 +2,13 @@ import numpy as np
 import random as rnd
 
 class Game(object):
-    def __init__(self):
-        self._countSpaces = 16
-        self._score = 0
+    def __init__(self, boardSize = 4):
+        self.BoardSize = boardSize
         self.NewGame()
 
     def NewGame(self):
-        self.Field = np.zeros((4,4))
-        self._countSpaces = 16
+        self.Field = np.zeros((self.BoardSize, self.BoardSize))
+        self._countSpaces = self.BoardSize**2
         self._score = 0
         self._AddRandomNumber()
         self._AddRandomNumber()
@@ -18,8 +17,8 @@ class Game(object):
         place = rnd.randint(0,self._countSpaces - 1)
         curPlace = 0
         wasPlaced = False
-        for i in range(4):
-            for j in range(4):
+        for i in range(self.BoardSize):
+            for j in range(self.BoardSize):
                 if(self.Field[i,j] == 0):
                     if(curPlace == place):
                         self.Field[i,j] = 2 if (rnd.randint(0,100) <= 90) else 4
@@ -55,12 +54,12 @@ class Game(object):
     def Left(self):
         prevScore = self._score
         bias = False #было ли смещение
-        for i in range(4):
+        for i in range(self.BoardSize):
             emptyPos = 0 #индекс места куда должна быть смещена плитка
-            for j in range(4):
+            for j in range(self.BoardSize):
                 if(self.Field[i,j] != 0):
                     #объединение двух плиток
-                    for k in range(j+1, 4):
+                    for k in range(j+1, self.BoardSize):
                         if(self.Field[i,k] == self.Field[i, j]):
                             self.Field[i, j] = 2*self.Field[i,j]
                             self._score += self.Field[i, j]

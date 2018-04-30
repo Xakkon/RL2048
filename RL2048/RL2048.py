@@ -21,4 +21,8 @@ def PlayOnConsole():
         print("Score =",gm._score)
         print(gm.Field)
 
-PlayOnConsole()
+def main():
+    PlayOnConsole()
+
+if __name__ == "__main__":
+    main()
