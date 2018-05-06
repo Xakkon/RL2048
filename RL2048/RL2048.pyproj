@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\Algorithms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Algorithms\__init__.py">
       <SubType>Code</SubType>
     </Compile>

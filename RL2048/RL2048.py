@@ -1,4 +1,6 @@
 from Environment.Game import Game
+from Algorithms import Algorithms as alg
+import matplotlib.pyplot  as plt
 
 def PlayOnConsole():
     gm = Game()
@@ -14,8 +16,42 @@ def PlayOnConsole():
             print("Score =",gm._score)
             print(gm.Field)
 
+def PlayTactics(iteration:int):
+    lsRandom = []
+    gm = Game()
+    for i in range(iteration):
+        gm.NewGame()
+        t = alg.RandomTactic(gm)
+        lsRandom.append(t)
+
+    lsCircle = []
+    for i in range(iteration):
+        gm.NewGame()
+        t = alg.CircleTactic(gm)
+        lsCircle.append(t)
+
+    lsAngle = []
+    for i in range(iteration):
+        gm.NewGame()
+        t = alg.AngleTactic(gm)
+        lsAngle.append(t)
+    
+    lsAngleBag = []
+    for i in range(iteration):
+        gm.NewGame()
+        t = alg.AngleBagTactic(gm)
+        lsAngleBag.append(t)
+
+    lsCircle.sort()
+    lsRandom.sort()
+    lsAngle.sort()
+    lsAngleBag.sort()
+    plt.plot(lsRandom, 'r--',lsCircle, 'b--', lsAngle, 'g--', lsAngleBag, 'y--')
+    plt.show()
+
 def main():
-    PlayOnConsole()
+    #PlayOnConsole()
+    PlayTactics(5)
 
 if __name__ == "__main__":
     main()
