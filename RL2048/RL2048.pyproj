@@ -41,7 +41,6 @@
   <ItemGroup>
     <Folder Include="Environment\" />
     <Folder Include="Algorithms\" />
-    <Folder Include="D:\Programming\RL2048\RL2048\ReinforcementLearning\" />
     <Folder Include="ReinforcementLearning\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
