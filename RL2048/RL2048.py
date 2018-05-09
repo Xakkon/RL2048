@@ -17,41 +17,26 @@ def PlayOnConsole():
             print(gm.Field)
 
 def PlayTactics(iteration:int):
-    lsRandom = []
     gm = Game()
-    for i in range(iteration):
-        gm.NewGame()
-        t = alg.RandomTactic(gm)
-        lsRandom.append(t)
 
-    lsCircle = []
-    for i in range(iteration):
-        gm.NewGame()
-        t = alg.CircleTactic(gm)
-        lsCircle.append(t)
+    plt.plot(Play(gm, alg.RandomTactic, iteration), 'r-',Play(gm, alg.CircleTactic, iteration),'b-',
+            Play(gm, alg.AngleTactic, iteration), 'g-', Play(gm, alg.AngleBagTactic, iteration), 'y-.',
+           Play(gm, alg.AxisTactic, iteration), 'k-')
 
-    lsAngle = []
-    for i in range(iteration):
-        gm.NewGame()
-        t = alg.AngleTactic(gm)
-        lsAngle.append(t)
-    
-    lsAngleBag = []
-    for i in range(iteration):
-        gm.NewGame()
-        t = alg.AngleBagTactic(gm)
-        lsAngleBag.append(t)
-
-    lsCircle.sort()
-    lsRandom.sort()
-    lsAngle.sort()
-    lsAngleBag.sort()
-    plt.plot(lsRandom, 'r--',lsCircle, 'b--', lsAngle, 'g--', lsAngleBag, 'y--')
     plt.show()
+
+def Play(game:Game, tactic, iteration):
+    lsTactic = []
+    for i in range(iteration):
+        game.NewGame()
+        t = tactic(game)
+        lsTactic.append(t)
+    lsTactic.sort()
+    return lsTactic
 
 def main():
     #PlayOnConsole()
-    PlayTactics(5)
+    PlayTactics(100)
 
 if __name__ == "__main__":
     main()

@@ -50,3 +50,17 @@ def AngleTactic(game:Game):
             i += 1
             prevMoves = game.CountMoves
         return game.Score
+
+def AxisTactic(game:Game):
+    if(isinstance(game, Game)):
+        moves = [{0 : game.Up, 1 : game.Down}, {0 : game.Right, 1 : game.Left}]
+        i = 0
+        axis = 0
+        prevMoves = 0
+        while(not game.EndGame):
+            moves[axis%2][i%2]()
+            if((game.CountMoves - prevMoves) == 0):
+                axis += 1
+            i += 1
+            prevMoves = game.CountMoves
+        return game.Score
